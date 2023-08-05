@@ -1,30 +1,37 @@
-.red {
-    color: red;
-  }
+
   .toDoContainer {
-    border: 2px dashed pink;
+    border: 2px solid blue;
     margin: auto;
     margin-top: 25px;
     border-radius: 25px;
     padding: 15px;
-    width: 800px;
+    width: 700px;
   }
   .todo {
-    margin: 30px auto;
+    margin: 30px;
     font-size: 20px;
     display: flex;
-    border-bottom: 1px solid black;
-    width: 80%;
+    border-bottom: 2px solid black;
+    width: 90%;
   }
   .todoText {
-    margin-left: 10px;
     display: flex;
-    width: 100%;
+    width: 100%;   
     justify-content: space-between;
+
+  }
+  .right{
+    margin-left: auto;
   }
   .done {
     text-decoration: line-through;
   }
+  .highlight{
+    background-color: yellow;
+  }
   .trash {
+    cursor: pointer;
+  }
+  .star{
     cursor: pointer;
   }

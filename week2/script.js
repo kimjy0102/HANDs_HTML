@@ -1,15 +1,15 @@
-// console.log("안녕하세요");
-// const arr = ["1번", "2번", "3번"];
-// arr.map((e) => document.write(e + "입니다<br/>"));
-// arr.forEach((e) => document.write("<div class='red'>", e, "</div>"));
-// document.write("출력이 되나요?");
 const todoContainer = document.querySelector(".toDoContainer");
 reload();
 function todoClicked(event) {
   const todo = event.target.parentNode;
   const todoText = todo.children[1].children[0];
-  console.log(todoText);
+  console.log(todo.children);
   todoText.classList.toggle("done");
+}
+function starClicked(event) {
+    const todo = event.target.parentNode;
+    const todoHigh = todo.children[0];
+    todoHigh.classList.toggle("highlight");
 }
 
 function addTodo(text) {
@@ -30,10 +30,18 @@ function addTodo(text) {
   const spanTrash = document.createElement("span");
   spanTrash.className = "trash";
   spanTrash.innerText = "🗑️";
+  
+  const spanStar = document.createElement("span");
+  spanStar.className = "star";
+  spanStar.innerText = "⭐";
+
+  const spanRight = document.createElement("span");
+  spanRight.className = "right";
 
   newText.appendChild(spanText);
+  newText.appendChild(spanRight);
+  newText.appendChild(spanStar);
   newText.appendChild(spanTrash);
-
   newTodo.appendChild(newCheck);
   newTodo.appendChild(newText);
 
@@ -62,10 +70,15 @@ function todoDelete(event) {
 function reload() {
   let checkboxes = document.querySelectorAll(".checkbox");
   let trashIcons = document.querySelectorAll(".trash");
+  let starIcons = document.querySelectorAll(".star");
   console.log(checkboxes);
   checkboxes.forEach((element) => {
     element.addEventListener("click", (event) => todoClicked(event));
   });
+  console.log(starIcons);
+  starIcons.forEach((element)  => {
+    element.addEventListener("click", (event) => starClicked(event));
+});
 
   trashIcons.forEach((element) => {
     element.addEventListener("click", (event) => todoDelete(event));
