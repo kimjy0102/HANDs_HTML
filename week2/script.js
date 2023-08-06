@@ -71,16 +71,18 @@ function reload() {
   let checkboxes = document.querySelectorAll(".checkbox");
   let trashIcons = document.querySelectorAll(".trash");
   let starIcons = document.querySelectorAll(".star");
-  console.log(checkboxes);
-  checkboxes.forEach((element) => {
-    element.addEventListener("click", (event) => todoClicked(event));
-  });
   console.log(starIcons);
-  starIcons.forEach((element)  => {
-    element.addEventListener("click", (event) => starClicked(event));
-});
+  console.log(checkboxes);
+  console.log(starIcons);
+  [].forEach.call(starIcons, function (col) {
+    col.addEventListener("click", starClicked, false);
+  });
 
-  trashIcons.forEach((element) => {
-    element.addEventListener("click", (event) => todoDelete(event));
+  [].forEach.call(trashIcons, function (col) {
+    col.addEventListener("click", todoDelete, false);
+  });
+
+  [].forEach.call(checkboxes, function (col) {
+    col.addEventListener("click", todoClicked, false);
   });
 }
