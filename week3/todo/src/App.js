@@ -7,8 +7,11 @@ function App() {
   const onInputChange = (event) => setText(event.target.value);
   const onFormSubmig = (event) => {
     event.preventDefault();
-    setToDos([text,...toDos]);
+    //빈칸 입력 막기
+    if(text.trim() !==""){
+      setToDos([text,...toDos]);
     setText("");
+    };
   };
   
   const onTrashClick = (event) =>{
@@ -27,7 +30,10 @@ function App() {
       }
       return todo;
     });
-    setToDos(NewtoDos);
+    //수정 시 빈칸 입력 막기
+    if (editText.trim() !==""){
+      setToDos(NewtoDos);
+    };
   };
 
   return (
