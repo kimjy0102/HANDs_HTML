@@ -38,19 +38,21 @@ function App() {
 
   return (
     <div className="App">
-      <div>ReMinders</div>
+      <div><h1 className="Reminders">ReMinders</h1></div>
     <form onSubmit= {onFormSubmig}>
       <input onChange={onInputChange} type = "text" value = {text}/>
       <input type = "submit" value ="ADD"/>
     </form>
+    <div className="container">
     <ul>
     {toDos.map((todo,idx) => (
     <li key={idx} id ={idx} className="todo">
      {todo}
-     <span className ="edit" onClick={onEditTodo}>✏️</span>
-     <span className ="trash" onClick={onTrashClick}>🗑️</span>
+      <span className ="edit" onClick={onEditTodo}>✏️</span>
+      <span className ="trash" onClick={onTrashClick}>🗑️</span>
      </li>))}
      </ul>
+     </div>
     </div>
   );
 }

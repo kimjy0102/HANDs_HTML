@@ -1,7 +1,25 @@
+.edit{
+  cursor: pointer; 
+  
+}
 .trash{
   cursor: pointer;
 }
-.edit{
-  cursor: pointer;
+.Reminders{
+  display: inline-block;
+  padding: 10px;
+  color:black;
+  border-style:dotted;
+  border-color: red;
+  border-width: 5px;
 }
-
+.container{
+  border-style: dashed;
+  border-width: 3px;
+  border-color: blue;
+  margin-top: 20px;
+}
+.todo{
+  font-size: 20px;
+  text-decoration: underline;
+}
