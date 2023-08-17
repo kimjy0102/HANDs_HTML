@@ -31,9 +31,12 @@ function App() {
       return todo;
     });
     //수정 시 빈칸 입력 막기
-    if (editText.trim() !==""){
+    if(editText !== null){
+     if (editText.trim() !=="")
+      {
       setToDos(NewtoDos);
-    };
+      }
+    }
   };
 
   return (
@@ -44,10 +47,10 @@ function App() {
       <input type = "submit" value ="ADD"/>
     </form>
     <div className="container">
-    <ul>
+    <ul className="list">
     {toDos.map((todo,idx) => (
     <li key={idx} id ={idx} className="todo">
-     {todo}
+      <span className="todo-text">{todo}</span>
       <span className ="edit" onClick={onEditTodo}>✏️</span>
       <span className ="trash" onClick={onTrashClick}>🗑️</span>
      </li>))}

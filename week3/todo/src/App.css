@@ -1,6 +1,6 @@
 .edit{
   cursor: pointer; 
-  
+  margin-left: 95%;
 }
 .trash{
   cursor: pointer;
@@ -19,7 +19,9 @@
   border-color: blue;
   margin-top: 20px;
 }
+
 .todo{
-  font-size: 20px;
-  text-decoration: underline;
+  margin: 5px;
+  border-bottom: 1px solid black;
+  padding: 4px;
 }
