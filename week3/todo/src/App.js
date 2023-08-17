@@ -1,11 +1,20 @@
-import {useState} from "react";
+import { useEffect, useState} from "react";
 import './App.css';
 
 function App() {
   const [text, setText] = useState("");
   const [toDos, setToDos] = useState([]);
+  useEffect(() => {
+    const TODOS = localStorage.getItem("todos");
+    if(TODOS) setToDos(TODOS.split(","));
+  }, []);
+  useEffect(() => {
+    if(toDos.length !== 0){
+      localStorage.setItem("todos", toDos);
+    }
+  }, [toDos]);
   const onInputChange = (event) => setText(event.target.value);
-  const onFormSubmig = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     //빈칸 입력 막기
     if(text.trim() !==""){
@@ -17,9 +26,11 @@ function App() {
   const onTrashClick = (event) =>{
     const element =(event.target.parentNode)
     const ok = window.confirm("["+toDos.filter((todo,idx) => idx === Number(element.id))+"]을/를 삭제하시겠습니까?");
+    const newTodos = toDos.filter((todo,idx) => idx !== Number(element.id));
     if (ok){
-    setToDos(toDos.filter((todo,idx) => idx !== Number(element.id)));
-  };
+    setToDos(newTodos);
+    };
+    if(newTodos.length === 0) localStorage.removeItem("todos");
   };
   const onEditTodo = (event) =>{
     const id = Number(event.target.parentNode.id);
@@ -41,8 +52,8 @@ function App() {
 
   return (
     <div className="App">
-      <div><h1 className="Reminders">ReMinders</h1></div>
-    <form onSubmit= {onFormSubmig}>
+      <div><h1 className="Reminders">ReMinders ({toDos.length})</h1></div>
+    <form onSubmit= {onFormSubmit}>
       <input onChange={onInputChange} type = "text" value = {text}/>
       <input type = "submit" value ="ADD"/>
     </form>

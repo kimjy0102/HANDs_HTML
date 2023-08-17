@@ -1,9 +1,10 @@
 .edit{
   cursor: pointer; 
-  margin-left: 95%;
+  float: right;
 }
 .trash{
   cursor: pointer;
+  float: right;
 }
 .Reminders{
   display: inline-block;
@@ -12,6 +13,7 @@
   border-style:dotted;
   border-color: red;
   border-width: 5px;
+  background-color: aquamarine;
 }
 .container{
   border-style: dashed;
